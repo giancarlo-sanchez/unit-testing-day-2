@@ -67,7 +67,7 @@ const server = http.createServer(async (req, res) => {
     res.writeHead(302);
   }
 
-  else if (req.url.startsWith('/search') && req.method === 'GET') {
+  else if (req.url.startsWith('/search') && req.method === 'GET') {   //Search For To-Do-Items.
     const [_, query] = req.url.split('?', 2);
     const { term } = querystring.parse(query);
     const filePath = path.join(__dirname, 'search-items-screen.html');
