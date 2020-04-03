@@ -1,10 +1,10 @@
 {
   "name": "fullstack-to-do-list-project-solution",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "start": "node server.js"
   },
   "keywords": [],
   "author": "",
@@ -12,5 +12,17 @@
   "dependencies": {
     "chai": "^4.2.0",
     "mocha": "^7.1.1"
-  }
+  },
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/appacademy-starters/testing-an-existing-app-project.git"
+  },
+  "bugs": {
+    "url": "https://github.com/appacademy-starters/testing-an-existing-app-project/issues"
+  },
+  "homepage": "https://github.com/appacademy-starters/testing-an-existing-app-project#readme",
+  "description": ""
 }

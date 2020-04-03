@@ -1,4 +1,4 @@
-function mergeItems(template, items) {
+function mergeItems(template, items) {   //equal to mergeCategories but instead of passing <li> we will pass td and tr
   let trs = '';
 
   let index = 1;

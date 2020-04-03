@@ -14,25 +14,27 @@ const { searchItems } = require('./search-items');
 let categories = ['Fun', 'Work', 'School'];
 let items = [];
 const server = http.createServer(async (req, res) => {
+
+  //This part shows the list of categories
   if (req.url === "/categories" && req.method === 'GET') {
     const filePath = path.join(__dirname, 'category-list-screen.html');
     const template = await fs.promises.readFile(filePath, 'utf-8');
-    const html = mergeCategories(template, categories, 'li');
+    const html = mergeCategories(template, categories, 'li');//we need to write test for mergeCategories();
     res.setHeader('Content-Type', 'text/html');
     res.writeHead(200);
     res.write(html);
   }
 
   else if (req.url === "/categories" && req.method === 'POST') {
-    const body = await getBodyFromRequest(req);
-    const newCategory = getValueFromBody(body, 'categoryName')
-    categories = saveCategories(categories, newCategory);
+    const body = await getBodyFromRequest(req);    //we need to write test for this
+    const newCategory = getValueFromBody(body, 'categoryName')//we need to write test for this
+    categories = saveCategories(categories, newCategory); //we need to write test for this
     res.setHeader('Location', '/categories');
     res.writeHead(302);
   }
 
   else if (req.url === "/items/new" && req.method === 'GET') {
-    const filePath = path.join(__dirname, 'todo-form-screen.html');
+    const filePath = path.join(__dirname, 'todo-form-screen.html');  //new Item screen.
     const template = await fs.promises.readFile(filePath, 'utf-8');
     const html = mergeCategories(template, categories, 'option');
     res.setHeader('Content-Type', 'text/html');
@@ -59,7 +61,7 @@ const server = http.createServer(async (req, res) => {
   }
 
   else if (req.url.startsWith('/items/') && req.method === 'POST') {
-    const index = Number.parseInt(req.url.substring(7)) - 1;
+    const index = Number.parseInt(req.url.substring(7)) - 1;   //Show and complete a to-do item
     items[index].isComplete = true;
     res.setHeader('Location', '/items');
     res.writeHead(302);
